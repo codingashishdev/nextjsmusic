@@ -1,14 +1,11 @@
 "use client";
-import React, { useState } from "react";
-import {
-    HoveredLink,
-    Menu,
-    MenuItem,
-    ProductItem,
-} from "../components/ui/navbar-menu";
-import { cn } from "@/lib/utils";
 
-export default function Navbar({ className }: { className?: string }) {
+import React, { useState } from "react";
+import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+
+function Navbar({ className }: { className?: string }) {
     const [active, setActive] = useState<string | null>(null);
     return (
         <div
@@ -18,64 +15,42 @@ export default function Navbar({ className }: { className?: string }) {
             )}
         >
             <Menu setActive={setActive}>
-            <MenuItem setActive={setActive} active={active} item="Home">
+                <Link href={"/"}>
+                    <MenuItem
+                        setActive={setActive}
+                        active={active}
+                        item="Home"
+                    ></MenuItem>
+                </Link>
+                <MenuItem
+                    setActive={setActive}
+                    active={active}
+                    item="Our Courses"
+                >
                     <div className="flex flex-col space-y-4 text-sm">
-                    </div>
-                </MenuItem>
-
-                <MenuItem setActive={setActive} active={active} item="Our courses">
-                    <div className="flex flex-col space-y-4 text-sm">
-                        <HoveredLink href="/all-courses">
-                            All courses
-                        </HoveredLink>
-                        <HoveredLink href="/basic-music-theory">
+                        <HoveredLink href="/courses">All Courses</HoveredLink>
+                        <HoveredLink href="/courses">
                             Basic Music Theory
                         </HoveredLink>
-                        <HoveredLink href="/advanced-composition">
+                        <HoveredLink href="/courses">
                             Advanced Composition
                         </HoveredLink>
-                        <HoveredLink href="/songwriting">
-                            Songwriting
-                        </HoveredLink>
-                        <HoveredLink href="/music-production">
+                        <HoveredLink href="/courses">Songwriting</HoveredLink>
+                        <HoveredLink href="/courses">
                             Music Production
                         </HoveredLink>
                     </div>
                 </MenuItem>
-                {/* <MenuItem setActive={setActive} active={active} item="Products">
-                    <div className="  text-sm grid grid-cols-2 gap-10 p-4">
-                        <ProductItem
-                            title="Algochurn"
-                            href="https://algochurn.com"
-                            src="https://assets.aceternity.com/demos/algochurn.webp"
-                            description="Prepare for tech interviews like never before."
-                        />
-                        <ProductItem
-                            title="Tailwind Master Kit"
-                            href="https://tailwindmasterkit.com"
-                            src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
-                            description="Production ready Tailwind css components for your next project"
-                        />
-                        <ProductItem
-                            title="Moonbeam"
-                            href="https://gomoonbeam.com"
-                            src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
-                            description="Never write from scratch again. Go from idea to blog in minutes."
-                        />
-                        <ProductItem
-                            title="Rogue"
-                            href="https://userogue.com"
-                            src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
-                            description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
-                        />
-                    </div>
-                </MenuItem> */}
-                <MenuItem setActive={setActive} active={active} item="Contact us">
-                    <div className="flex flex-col space-y-4 text-sm">
-                        <HoveredLink href='/contact-us'></HoveredLink>
-                    </div>
-                </MenuItem>
+                <Link href={"/contact"}>
+                    <MenuItem
+                        setActive={setActive}
+                        active={active}
+                        item="Contact Us"
+                    ></MenuItem>
+                </Link>
             </Menu>
         </div>
     );
 }
+
+export default Navbar;
