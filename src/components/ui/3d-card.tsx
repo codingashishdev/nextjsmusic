@@ -132,7 +132,7 @@ export const CardItem = ({
             }
         };
         handleAnimations()
-    }, [isMouseEntered]);
+    }, [isMouseEntered, rotateX, rotateY, rotateZ, translateX, translateY, translateZ]);
 
 
     return (

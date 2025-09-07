@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 export const InfiniteMovingCards = ({
     items,
@@ -22,29 +22,11 @@ export const InfiniteMovingCards = ({
 }) => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const scrollerRef = React.useRef<HTMLUListElement>(null);
+    const hasDuplicatedRef = React.useRef(false);
 
-    
-    useEffect(() => {
-        function addAnimation() {
-            if (containerRef.current && scrollerRef.current) {
-                const scrollerContent = Array.from(scrollerRef.current.children);
-    
-                scrollerContent.forEach((item) => {
-                    const duplicatedItem = item.cloneNode(true);
-                    if (scrollerRef.current) {
-                        scrollerRef.current.appendChild(duplicatedItem);
-                    }
-                });
-    
-                getDirection();
-                getSpeed();
-                setStart(true);
-            }
-        }
-        addAnimation()
-    }, []);
     const [start, setStart] = useState(false);
-    const getDirection = () => {
+
+    const getDirection = useCallback(() => {
         if (containerRef.current) {
             if (direction === "left") {
                 containerRef.current.style.setProperty(
@@ -58,8 +40,9 @@ export const InfiniteMovingCards = ({
                 );
             }
         }
-    };
-    const getSpeed = () => {
+    }, [direction]);
+
+    const getSpeed = useCallback(() => {
         if (containerRef.current) {
             if (speed === "fast") {
                 containerRef.current.style.setProperty(
@@ -78,7 +61,31 @@ export const InfiniteMovingCards = ({
                 );
             }
         }
-    };
+    }, [speed]);
+
+    useEffect(() => {
+        function addAnimation() {
+            if (containerRef.current && scrollerRef.current) {
+                if (!hasDuplicatedRef.current) {
+                    const scrollerContent = Array.from(scrollerRef.current.children);
+
+                    scrollerContent.forEach((item) => {
+                        const duplicatedItem = item.cloneNode(true);
+                        if (scrollerRef.current) {
+                            scrollerRef.current.appendChild(duplicatedItem);
+                        }
+                    });
+
+                    hasDuplicatedRef.current = true;
+                }
+
+                getDirection();
+                getSpeed();
+                setStart(true);
+            }
+        }
+        addAnimation();
+    }, [getDirection, getSpeed]);
     return (
         <div
             ref={containerRef}
