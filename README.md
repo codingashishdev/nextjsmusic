@@ -131,5 +131,5 @@ Add screenshots in `docs/images/` and embed them here. For example:
 
 ## License
 
-No license specified.
+No license specified
 
