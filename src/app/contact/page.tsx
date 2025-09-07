@@ -1,6 +1,5 @@
 'use client'
 import { BackgroundBeams } from "@/components/ui/background-beams";
-import { Meteors } from "@/components/ui/meteors";
 import React from "react";
 
 function Contact() {
@@ -11,7 +10,7 @@ function Contact() {
                 <div className="flex flex-col items-center justify-center m-3">
                     <div className="space-y-5">
                         <h1 className="text-center text-8xl tracking-tight">Contact Us</h1>
-                        <p className="max-w-135 text-center text-gray-500">We're here to help with any questions about our courses, programs, or events. Reach out and let us know how we can assist you in your musical journey</p>
+                        <p className="max-w-135 text-center text-gray-500">We&apos;re here to help with any questions about our courses, programs, or events. Reach out and let us know how we can assist you in your musical journey</p>
                     </div>
 
                     <div className="flex flex-col space-y-5 m-10">

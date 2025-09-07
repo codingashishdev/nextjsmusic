@@ -7,7 +7,7 @@ function HeroSection() {
     return (
         <>
             <div className="md:h-[30rem] w-full rounded-md flex flex-col items-center justify-center relative overflow-hidden mx-auto min-h-screen md:py-0">
-                <Spotlight/>
+                <Spotlight />
                 <div className="py-20 text-2xl font-bold tracking-tighter md:text-8xl ">
                     <div className="whitespace-nowrap">
                         Master{" "}
@@ -19,7 +19,7 @@ function HeroSection() {
                 <div className="p-0 relative z-10 w-full text-center">
                     <p className="font-medium text-base md:text-xl  text-neutral-400 max-w-md mx-auto">
                         Dive into our comprehensive music courses and transform
-                        your musical journey today. Whether you're beginner or
+                        your musical journey today. Whether you&apos;re beginner or
                         looking to refine your skills, join us to unlock your
                         true potentional.
                     </p>
