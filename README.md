@@ -131,5 +131,5 @@ Add screenshots in `docs/images/` and embed them here. For example:
 
 ## License
 
-No license specified. For portfolio/resume use.
+No license specified.
 
