@@ -2,7 +2,6 @@ import Link from "next/link";
 import React from "react";
 import { Spotlight } from "./ui/Spotlight";
 import { PointerHighlight } from "./ui/pointer-highlight";
-import PointerHighlightDemo from "./pointer-highlight-demo";
 
 function HeroSection() {
     return (
