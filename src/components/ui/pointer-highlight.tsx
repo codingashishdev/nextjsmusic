@@ -39,7 +39,7 @@ export function PointerHighlight({
         resizeObserver.unobserve(containerRef.current);
       }
     };
-  }, [containerRef.current]);
+  }, []);
 
   return (
     <div

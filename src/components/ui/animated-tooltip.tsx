@@ -34,6 +34,7 @@ export const AnimatedTooltip = ({
         springConfig,
     );
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleMouseMove = (event: any) => {
         if (animationFrameRef.current) {
             cancelAnimationFrame(animationFrameRef.current);
